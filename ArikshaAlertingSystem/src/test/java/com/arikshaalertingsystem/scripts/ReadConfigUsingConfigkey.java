@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.*;
 
 /**
  * 
- * @author Sanjay Gond
+ * @author Sanjay
  *
  */
 
@@ -17,18 +17,18 @@ public class ReadConfigUsingConfigkey extends BaseApiClass {
 
 	@Test
 
-	public void readConfiguration() throws Throwable {
+	public void readConfigurationUsingConfigKey() throws Throwable {
 
 		Response resp = given()
+				.pathParam("config_key", "dell1")
 				.queryParam("org_id", "dell44")
 				
 				.when()
-				.get(EndPoints.Configuration);
+				.get(EndPoints.ConfigKey);
 
 		resp.then()
 		.log().all()
-		.assertThat().statusCode(200)
-		.assertThat().time(Matchers.lessThan(1200l));
+		.assertThat().statusCode(200);
 		
 
 	}
